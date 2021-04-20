@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - create_user 
+    - apache  
+  vars:
+    users:
+    - username: "eakkoyun"
+      groups: "admin"
+    - username: "emrah"
+      groups: "admin"
+    remove_users:
+    - "akkoyun"
+    doc_root: /var/www/example
