@@ -7,7 +7,7 @@
     users:
     - username: "eakkoyun"
       groups: "admin"
-    - username: "onur"
+    - username: "emrah"
       groups: "admin"
     remove_users:
-    - "emrah"
+    - "akkoyun"
