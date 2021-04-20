@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - create_user 
+  vars:
+    users:
+    - username: "eakkoyun"
+      groups: "admin"
+    - username: "onur"
+      groups: "admin"
+    remove_users:
+    - "emrah"
