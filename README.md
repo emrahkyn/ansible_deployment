@@ -1,2 +1,2 @@
 # ansible_deployment
-to deploy common ansible roles
+use common ansible roles and deployment
