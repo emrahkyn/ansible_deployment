@@ -15,4 +15,21 @@ These are the common other ansible commands useful.
 	- to run a playbook for creating users. --check is for dry run.
 - ansible-playbook create_user.yml -l web_server --tags "delete_users"
 	- to run a specific task here. you need to add tag into your task as following.
+* * *
+## to create ansible user via ssh remotely
+- put passwd and ssh_pubkey in content of the create_ansible_user.sh and run the following command.
 
+`cat create_ansible_user.sh | ssh <username>@<remote_server_ip>`
+
+```
+#add service group/user
+addgroup ansible
+useradd ansible --create-home --shell /bin/bash --gid ansible
+usermod -aG sudo ansible
+echo "ansible:mypasswd" | sudo chpasswd
+mkdir /home/ansible/.ssh
+chmod 700 /home/ansible/.ssh
+echo "<ssh_pubkey>" >> /home/ansible/.ssh/authorized_keys
+chown ansible:ansible /home/ansible -R
+echo "ansible ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/ansible
+```
